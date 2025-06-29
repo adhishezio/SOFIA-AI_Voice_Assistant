@@ -1,3 +1,4 @@
+livekit-agents[telephony]
 livekit-agents
 livekit-plugins-openai
 livekit-plugins-silero
@@ -8,3 +9,8 @@ duckduckgo-search
 langchain_community
 requests
 python-dotenv
+langchain-google-genai
+langchain-community
+langchain-chroma
+langchain-huggingface
+sentence-transformers
