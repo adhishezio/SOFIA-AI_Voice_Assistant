@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 import logging
-
+import asyncio
+from livekit.rtc import DataPacket, DataPacketKind
 from livekit import agents
 from livekit.agents import Agent, AgentSession, RoomInputOptions, RunContext, function_tool
 from livekit.plugins import google
@@ -27,6 +28,7 @@ class Assistant(Agent):
         )
         self.memory = MemorySystem()
         self.user_identity: str | None = None
+
 
     def set_user_identity(self, identity: str):
         self.user_identity = identity
@@ -64,8 +66,24 @@ class Assistant(Agent):
 
 async def entrypoint(ctx: agents.JobContext):
     agent = Assistant()
-
     session = AgentSession()
+
+    # This async function contains the logic to publish the data
+    async def _publish_agent_transcript(text: str):
+        logging.info(f"Agent said: '{text}', sending over data channel.")
+        await ctx.room.local_participant.publish_data(
+            payload=text,
+            kind=DataPacketKind.KIND_RELIABLE,
+            topic="sofia-transcript",
+        )
+    
+    # This is the synchronous wrapper function required by the event listener
+    def on_agent_said(text: str):
+        asyncio.create_task(_publish_agent_transcript(text))
+    
+    # Register the synchronous wrapper with the 'agent_said' event
+    session.on("agent_said", on_agent_said)
+
     await session.start(
         room=ctx.room,
         agent=agent,

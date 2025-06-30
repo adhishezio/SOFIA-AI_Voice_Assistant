@@ -1,0 +1,49 @@
+/* General Layout */
+body {
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Room Layout */
+.room-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background: #111;
+}
+
+.video-container {
+  flex-grow: 1; /* Takes up all available space */
+  position: relative;
+}
+
+/* Transcript Styles */
+.transcript-container {
+  height: 200px; /* Fixed height for the transcript area */
+  overflow-y: auto; /* Make it scrollable */
+  padding: 1rem;
+  border-top: 1px solid #444;
+  display: flex;
+  flex-direction: column-reverse; /* Newest messages at the bottom */
+}
+
+.chat-message {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.chat-message strong {
+  color: #a371f7; /* A nice color for the sender name */
+  margin-right: 0.5rem;
+}
