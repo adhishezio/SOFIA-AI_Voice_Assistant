@@ -8,6 +8,12 @@ At its core, SOFIA leverages the **LiveKit Agents Framework** to manage real-tim
 
 This repository represents the ongoing development of SOFIA, with a focus on building a robust foundation before expanding to more advanced capabilities.
 
+<div style="text-align: center;">
+  <img width="60%" alt="sofia_demo" src="media/sofia_test1.gif">
+</div>
+
+**Here is a short demonstration of SOFIA in action. (Note: This is still in development.)**
+
 ## Current Development Stage
 
 **Status:** In Development
@@ -80,12 +86,6 @@ SOFIA is currently equipped with a powerful set of foundational features that al
 ## Future Development
 
 The vision for SOFIA is to evolve her into a truly indispensable assistant. The planned roadmap includes the integration of several advanced features:
-
-
-<img width="60%" alt="sofia_demo" src="media\sofia_test1.gif">
-
-**Here is a short demonstration of SOFIA in action. (Note: This is still in development.)**
-
 
 * **Reminders, Notes, and Calendar Management:**
     * Allowing users to set reminders that trigger at a specific time.
