@@ -83,7 +83,7 @@ The vision for SOFIA is to evolve her into a truly indispensable assistant. The 
 
 
 <center>
-  <video src="media/sofia_test1mp4.mp4" controls width="500">
+  <video src="./media/sofia_test1mp4.mp4" controls width="500">
     
   </video>
   
