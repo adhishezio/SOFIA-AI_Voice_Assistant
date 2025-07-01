@@ -82,7 +82,12 @@ SOFIA is currently equipped with a powerful set of foundational features that al
 The vision for SOFIA is to evolve her into a truly indispensable assistant. The planned roadmap includes the integration of several advanced features:
 
 
-<img width="60%" alt="sofia_demo" src="media\sofia_test1.gif">
+<center>
+  <video src="media/sofia_test1mp4.mp4" controls width="500">
+    
+  </video>
+  
+</center>
 
 **Here is a short demonstration of SOFIA in action. (Note: This is still in development.)**
 
