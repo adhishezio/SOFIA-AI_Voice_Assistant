@@ -25,18 +25,14 @@ function App() {
       
       const data = await response.json();
       
-      // --- DEBUGGING LOGS ---
-      // This will show us the exact object your server is sending.
+
       console.log('1. Full response object from server:', data); 
       
       // This will show us what is inside the 'token' property.
       console.log('2. Extracted "token" property:', data.token);
-      
-      // This will tell us the data type, it MUST be "string".
-      console.log('3. Type of extracted token:', typeof data.token);
-      // --- END DEBUGGING LOGS ---
 
-      // Set the token state with the extracted string.
+      console.log('3. Type of extracted token:', typeof data.token);
+  
       setToken(data.token);
 
     } catch (e) {

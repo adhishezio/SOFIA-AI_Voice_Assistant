@@ -1,4 +1,3 @@
-// token-server.js
 import express from 'express';
 import { AccessToken } from 'livekit-server-sdk';
 import dotenv from 'dotenv';
@@ -12,7 +11,6 @@ app.use(cors({
   origin: 'http://localhost:5173'
 }));
 
-// --- FIX: Make the handler async to use await ---
 app.get('/get-livekit-token', async (req, res) => {
   const { room, identity } = req.query;
 
@@ -32,13 +30,19 @@ app.get('/get-livekit-token', async (req, res) => {
     ttl: '1h',
   });
   
-  at.addGrant({ roomJoin: true, room, canPublishData: true });
+  // --- THIS IS THE FIX ---
+  // We are adding 'canPublish' and 'canSubscribe' to grant full permissions.
+  at.addGrant({
+    roomJoin: true,
+    room: room,
+    canPublish: true,
+    canSubscribe: true,
+    canPublishData: true,
+  });
+  // ----------------------
 
-  // --- FIX: The .toJwt() method is async and must be awaited ---
-  // This will now correctly resolve to the token STRING.
   const token = await at.toJwt(); 
 
-  // Send the final string in the correct JSON format.
   res.send({ token });
 });
 
