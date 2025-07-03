@@ -9,11 +9,7 @@ This project combines a powerful Python backend with a custom-built, animated fr
 At its core, SOFIA leverages the **LiveKit Agents Framework** to manage real-time voice communication between the user and the AI.
 
 <div style="text-align: center;">
-  <img width="70%" alt="sofia_demo_ui" src="media/sofia_ui.png">
-</div>
-
-<div style="text-align: center;">
-  <img width="60%" alt="sofia_demo" src="media/sofia_test1.gif">
+  <img width="70%" alt="sofia_demo_ui" src="media/sofia.gif">
 </div>
 
 **Here is a short demonstration of SOFIA in action. (Note: This is still in development.)**
