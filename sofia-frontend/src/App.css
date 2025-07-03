@@ -1,4 +1,3 @@
-/* --- Base Setup --- */
 body, html, #root {
   margin: 0;
   padding: 0;
@@ -10,7 +9,7 @@ body, html, #root {
   font-family: sans-serif;
 }
 
-/* --- Connect Button Container (Unchanged) --- */
+/* --- Connect Button Container ---*/
 .connect-container {
   display: flex;
   justify-content: center;
@@ -18,7 +17,7 @@ body, html, #root {
   height: 100vh;
 }
 
-/* --- FIX: Main Layout Container --- */
+/* --- Main Layout Container --- */
 .main-container {
   display: flex;
   flex-direction: column;
@@ -26,18 +25,18 @@ body, html, #root {
   height: 100%;
 }
 
-/* --- FIX: Custom Orb UI Container --- */
+/* --- Custom Orb UI Container --- */
 .sofia-ui-container {
   flex-grow: 1;
-  position: relative; /* This is important for positioning children */
+  position: relative; 
 }
 
-/* FIX: Hide default video tiles */
+/* Hide default video tiles */
 .lk-video-container {
   display: none;
 }
 
-/* --- FIX: Position the banner at the top of its container --- */
+/* --- Position the banner at the top of its container --- */
 #sofia-banner {
   position: absolute;
   top: 24px;
@@ -51,14 +50,14 @@ body, html, #root {
   letter-spacing: 0.15em;
 }
 
-/* --- FIX: Position the ControlBar at the bottom --- */
+/* --- Position the ControlBar at the bottom --- */
 [data-lk-theme='default'] .lk-control-bar {
   position: relative;
-  flex-shrink: 0; /* Prevent the bar from shrinking */
+  flex-shrink: 0; 
   padding: 10px 0;
 }
 
-/* --- SOFIA Title Animation (Unchanged) --- */
+/* --- SOFIA Title Animation --- */
 #sofia-banner span {
   display: inline-block;
   -webkit-text-stroke: 0.5px #004aff55;
@@ -77,13 +76,13 @@ body, html, #root {
   right: 0;
   width: 340px;
   height: 100%;
-  background-color: rgba(20, 20, 20, 0.8); /* Semi-transparent background */
-  backdrop-filter: blur(8px); /* Frosted glass effect */
+  background-color: rgba(20, 20, 20, 0.8); 
+  backdrop-filter: blur(8px); 
   border-left: 1px solid #333;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease-in-out;
-  z-index: 50; /* Ensure it's on top of the orb UI */
+  z-index: 50; 
 }
 
 .chat-panel.hidden {
