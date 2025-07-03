@@ -1,0 +1,103 @@
+/* --- Base Setup --- */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000;
+  color: white;
+  font-family: sans-serif;
+}
+
+/* --- Connect Button Container (Unchanged) --- */
+.connect-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* --- FIX: Main Layout Container --- */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- FIX: Custom Orb UI Container --- */
+.sofia-ui-container {
+  flex-grow: 1;
+  position: relative; /* This is important for positioning children */
+}
+
+/* FIX: Hide default video tiles */
+.lk-video-container {
+  display: none;
+}
+
+/* --- FIX: Position the banner at the top of its container --- */
+#sofia-banner {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 11;
+  pointer-events: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
+  letter-spacing: 0.15em;
+}
+
+/* --- FIX: Position the ControlBar at the bottom --- */
+[data-lk-theme='default'] .lk-control-bar {
+  position: relative;
+  flex-shrink: 0; /* Prevent the bar from shrinking */
+  padding: 10px 0;
+}
+
+/* --- SOFIA Title Animation (Unchanged) --- */
+#sofia-banner span {
+  display: inline-block;
+  -webkit-text-stroke: 0.5px #004aff55;
+  color: transparent;
+  animation: pulse 2.5s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { color: transparent; }
+  50% { color: #004aff; }
+}
+
+.chat-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 340px;
+  height: 100%;
+  background-color: rgba(20, 20, 20, 0.8); /* Semi-transparent background */
+  backdrop-filter: blur(8px); /* Frosted glass effect */
+  border-left: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  z-index: 50; /* Ensure it's on top of the orb UI */
+}
+
+.chat-panel.hidden {
+  transform: translateX(100%);
+}
+
+[data-lk-theme='default'] .lk-chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#sofia-banner span:nth-child(1) { animation-delay: 0s; }
+#sofia-banner span:nth-child(2) { animation-delay: 0.4s; }
+#sofia-banner span:nth-child(3) { animation-delay: 0.8s; }
+#sofia-banner span:nth-child(4) { animation-delay: 1.2s; }
+#sofia-banner span:nth-child(5) { animation-delay: 1.6s; }

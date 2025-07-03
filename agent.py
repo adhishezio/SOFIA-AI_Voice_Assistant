@@ -1,6 +1,8 @@
 from dotenv import load_dotenv
 import logging
-
+import asyncio
+import json 
+from livekit.rtc import DataPacket, DataPacketKind
 from livekit import agents
 from livekit.agents import Agent, AgentSession, RoomInputOptions, RunContext, function_tool
 from livekit.plugins import google
@@ -34,38 +36,51 @@ class Assistant(Agent):
 
     @function_tool()
     async def add_memory(self, context: RunContext, memory_text: str) -> str:
-        """adds a new piece of information to the assistant's long-term memory."""
         if not self.user_identity:
             return "I am unable to save this memory as I cannot identify the user."
-        
         logging.info(f"Saving memory for user: {self.user_identity}")
         return self.memory.add_memory(self.user_identity, memory_text)
 
     @function_tool()
     async def recall_memory(self, context: RunContext, query: str) -> str:
-        """searches long-term memory to find information relevant to the user's query."""
         if not self.user_identity:
             return "I am unable to recall memories as I cannot identify the user."
-            
         logging.info(f"Recalling memory for user: {self.user_identity}")
         return self.memory.recall_memory(self.user_identity, query)
 
     @function_tool()
     async def delete_memory(self, context: RunContext, query: str) -> str:
-        """
-        deletes a specific piece of information from the user's long-term memory
-        based on a descriptive query.
-        """
         if not self.user_identity:
             return "I am unable to delete memories as I cannot identify the user."
-            
         logging.info(f"Attempting to delete memory for user: {self.user_identity} with query: {query}")
         return self.memory.delete_memory(self.user_identity, query)
 
 async def entrypoint(ctx: agents.JobContext):
     agent = Assistant()
-
     session = AgentSession()
+
+    async def _publish_agent_transcript(text: str):
+        payload = {
+            "text": text,
+            "is_speaking": True,
+        }
+        # Convert the dictionary to a JSON string
+        json_payload = json.dumps(payload)
+        
+        logging.info(f"Agent said: '{text}', sending over data channel.")
+        # Then send the correct JSON payload
+        await ctx.room.local_participant.publish_data(
+            payload=json_payload,
+            kind=DataPacketKind.KIND_RELIABLE,
+            topic="sofia-transcript",
+        )
+
+    def on_agent_said(text: str):
+        asyncio.create_task(_publish_agent_transcript(text))
+    
+    session.on("agent_said", on_agent_said)
+
+    await ctx.connect()
     await session.start(
         room=ctx.room,
         agent=agent,
@@ -74,15 +89,17 @@ async def entrypoint(ctx: agents.JobContext):
             audio_enabled=True,
         ),
     )
-    
-    await ctx.connect()
-    
+    # await ctx.connect()
     stable_user_identity = "sofia_memory_user"
     agent.set_user_identity(stable_user_identity)
-    
-    await session.generate_reply(
-        instructions=SESSION_INSTRUCTION
-    )
+    try:
+        logging.info("Attempting to generate initial greeting...")
+        await session.generate_reply(
+            instructions=SESSION_INSTRUCTION
+        )
+        logging.info("Initial greeting generated successfully.")
+    except Exception as e:
+        logging.error(f"Could not generate initial reply: {e}")
 
 if __name__ == "__main__":
     agents.cli.run_app(agents.WorkerOptions(entrypoint_fnc=entrypoint))
