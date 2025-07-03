@@ -134,7 +134,6 @@ Once all three are running, open the `localhost` URL provided by the frontend te
 
 The vision for SOFIA is to evolve her into a truly indispensable assistant. The planned roadmap includes:
 
-<<<<<<< HEAD
 * **Reminders, Notes, and Calendar Management:** Integrating with local storage and calendar APIs.
 * **Advanced Animations:** Using a vertex shader to handle the orb animation for maximum performance.
 * **Proactive Assistance:** Enabling SOFIA to initiate conversations based on contextual cues.
@@ -152,4 +151,4 @@ The vision for SOFIA is to evolve her into a truly indispensable assistant. The 
     * Analyzing the user's tone of voice to understand their emotional state and adapt her responses for more empathetic and appropriate interactions.
 * **Smart Home Control:**
     * Integrating with smart home platforms like Home Assistant to allow for voice control of lights, thermostats, and other connected devices.
->>>>>>> e36139ab2e66b0196537a526a59392d2e21e1cb4
+
