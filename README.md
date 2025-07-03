@@ -88,7 +88,7 @@ This project consists of two main parts: the **Python Backend** and the **Fronte
     LIVEKIT_API_KEY="YOUR_LIVEKIT_API_KEY"
     LIVEKIT_API_SECRET="YOUR_LIVEKIT_API_SECRET"
 
-    # Google AI API Key (for Gemini/LLM)
+    # Google AI API Key (for Gemni/LLM)
     GOOGLE_API_KEY="YOUR_GOOGLE_GEMINI_API_KEY"
     ```
 
@@ -145,7 +145,7 @@ The vision for SOFIA is to evolve her into a truly indispensable assistant. The 
 * **Emotional Intelligence:** Analyzing the user's tone of voice to have more empathetic interactions.
 =======
 * **Reminders, Notes, and Calendar Management:**
-    * Allowing users to set reminders that trigger at a specific time.
+    * Allowing users to set reminders that trigger at specific time.
     * Saving and retrieving notes locally.
     * Integrating with Google Calendar to manage events and schedules through voice commands.
 * **Computer Vision:**
