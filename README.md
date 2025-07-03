@@ -30,10 +30,7 @@ SOFIA's capabilities are divided between her backend "brain" and her frontend "f
 
 ### Backend Agent Features
 
-* **Persistent Memory:** SOFIA has a long-term memory system built using a RAG architecture with a ChromaDB vector store. She can learn, recall, and delete information across multiple sessions, creating a truly personalized experience.
-* **Tool Use & Function Calling:** SOFIA can interact with the outside world using a set of defined tools:
-    * **Web Search:** Can search the web to answer questions about current events or general knowledge.
-    * **Weather Information:** Can retrieve the current weather for any city.
+
     * **Email Communication:** Can compose and send emails on behalf of the user.
 * **Safety Protocols:** Includes a two-step confirmation before deleting any memories to prevent accidental data loss.
 
@@ -138,22 +135,3 @@ Once all three are running, open the `localhost` URL provided by the frontend te
 
 The vision for SOFIA is to evolve her into a truly indispensable assistant. The planned roadmap includes:
 
-<<<<<<< HEAD
-* **Reminders, Notes, and Calendar Management:** Integrating with local storage and calendar APIs.
-* **Advanced Animations:** Using a vertex shader to handle the orb animation for maximum performance.
-* **Proactive Assistance:** Enabling SOFIA to initiate conversations based on contextual cues.
-* **Emotional Intelligence:** Analyzing the user's tone of voice to have more empathetic interactions.
-=======
-* **Reminders, Notes, and Calendar Management:**
-    * Allowing users to set reminders that trigger at specific time.
-    * Saving and retrieving notes locally.
-    * Integrating with Google Calendar to manage events and schedules through voice commands.
-* **Computer Vision:**
-    * Implementing a multi-modal vision model (like Gemini Pro Vision) to allow SOFIA to perceive, understand, and react to the user's visual environment through the camera feed.
-* **Proactive Assistance:**
-    * Enabling SOFIA to initiate conversations based on context, such as the time of day or upcoming calendar events (e.g., "Sir, you have a meeting in 15 minutes. Shall I provide a summary?").
-* **Emotional Intelligence:**
-    * Analyzing the user's tone of voice to understand their emotional state and adapt her responses for more empathetic and appropriate interactions.
-* **Smart Home Control:**
-    * Integrating with smart home platforms like Home Assistant to allow for voice control of lights, thermostats, and other connected devices.
->>>>>>> e36139ab2e66b0196537a526a59392d2e21e1cb4
