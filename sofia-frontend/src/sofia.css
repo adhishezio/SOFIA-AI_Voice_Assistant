@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
+.sofia-room-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center; 
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: #000; 
+}
+
+/* --- Layering and Positioning --- */
+
+#particles-js {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+#orb-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2; 
+  pointer-events: none;
+}
+
+#sofia-banner {
+  position: relative; 
+  padding-top: 24px;
+  text-align: center;
+  pointer-events: none;
+  z-index: 3;
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
+  letter-spacing: 0.15em;
+}
+
+
+#sofia-banner span {
+  display: inline-block;
+  -webkit-text-stroke: 0.5px #004aff55;
+  color: transparent;
+  animation: pulse 2.5s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { color: transparent; }
+  50% { color: #004aff; }
+}
+
+#sofia-banner span:nth-child(1) { animation-delay: 0s; }
+#sofia-banner span:nth-child(2) { animation-delay: 0.4s; }
+#sofia-banner span:nth-child(3) { animation-delay: 0.8s; }
+#sofia-banner span:nth-child(4) { animation-delay: 1.2s; }
+#sofia-banner span:nth-child(5) { animation-delay: 1.6s; }
+
+
+[data-lk-theme='default'] .lk-control-bar {
+  position: relative; 
+  bottom: 20px;
+}

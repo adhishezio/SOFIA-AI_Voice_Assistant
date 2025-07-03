@@ -139,6 +139,7 @@ celerybeat.pid
 .ai_voice
 .env
 .ai_voice2
+sofia-frontend/.env
 
 # Spyder project settings
 .spyderproject
