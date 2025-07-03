@@ -93,7 +93,7 @@ This project consists of two main parts: the **Python Backend** and the **Fronte
 1.  **Navigate to the Frontend Directory:**
     Open a *second, separate terminal* and navigate into the frontend folder:
     ```bash
-    cd sofia-ui-v2 
+    cd sofia-frontend
     ```
 
 2.  **Install Frontend Dependencies:**
