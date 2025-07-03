@@ -63,7 +63,7 @@ SOFIA is currently equipped with a powerful set of foundational features that al
     LIVEKIT_API_KEY="YOUR_LIVEKIT_API_KEY"
     LIVEKIT_API_SECRET="YOUR_LIVEKIT_API_SECRET"
 
-    # Google AI API Key (for Gemini/LLM)
+    # Google AI API Key (for Gemni/LLM)
     GOOGLE_API_KEY="YOUR_GOOGLE_GEMINI_API_KEY"
 
     # Gmail Credentials (for sending emails)
