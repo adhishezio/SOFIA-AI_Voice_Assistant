@@ -82,7 +82,7 @@ SOFIA is currently equipped with a powerful set of foundational features that al
 The vision for SOFIA is to evolve her into a truly indispensable assistant. The planned roadmap includes the integration of several advanced features:
 
 * **Reminders, Notes, and Calendar Management:**
-    * Allowing users to set reminders that trigger at a specific time.
+    * Allowing users to set reminders that trigger at specific time.
     * Saving and retrieving notes locally.
     * Integrating with Google Calendar to manage events and schedules through voice commands.
 * **Computer Vision:**
