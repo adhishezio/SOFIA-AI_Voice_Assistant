@@ -2,13 +2,12 @@ import {
   AudioTrack,
   ControlBar,
   useTracks,
-  type TrackReference, // Import the specific TrackReference type
+  type TrackReference, 
 } from '@livekit/components-react';
 import { Track } from 'livekit-client';
 import { SofiaUI } from './SofiaUI';
 
 export const Room = () => {
-  // Get all microphone audio tracks from all participants
   const audioTracks = useTracks(
     [{ source: Track.Source.Microphone, withPlaceholder: true }],
   );
