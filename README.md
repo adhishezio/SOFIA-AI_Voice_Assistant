@@ -20,7 +20,7 @@ SOFIA is currently equipped with a powerful set of foundational features that al
 
 * **Real-time Audio/Video Conversation:** Built on Google's Gemini models and LiveKit's WebRTC stack, SOFIA can engage in natural, low-latency dialogue over a live video call, allowing for face-to-face interaction.
 * **Persistent Memory (User Profiling):** SOFIA has a long-term memory system built using a RAG (Retrieval-Augmented Generation) architecture with a ChromaDB vector store. She can learn, recall, and even "forget" information about the user across multiple sessions, creating a truly personalized experience.
-* **Tool Use & Function Calling:** SOFIA can interact with the outside world by using a set of defined tools. The current toolset includes:
+* **Tool Use & Function Calling:** SOFIA can interact with the outside world by using a set of defined tools. The current toolset include:
     * **Web Search:** Can search the web using DuckDuckGo to answer questions about current events or general knowledge.
     * **Weather Information:** Can retrieve the current weather for any specified city.
     * **Email Communication:** Can compose and send emails on behalf of the user.
