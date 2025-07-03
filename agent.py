@@ -14,7 +14,6 @@ from memory_system import MemorySystem
 load_dotenv()
 
 class Assistant(Agent):
-    # ... Your Assistant class is perfect, no changes needed inside it ...
     def __init__(self):
         super().__init__(
             instructions=AGENT_INSTRUCTION,
@@ -61,7 +60,6 @@ async def entrypoint(ctx: agents.JobContext):
     session = AgentSession()
 
     async def _publish_agent_transcript(text: str):
-        # --- FIX: Create the payload object first ---
         payload = {
             "text": text,
             "is_speaking": True,
@@ -82,7 +80,7 @@ async def entrypoint(ctx: agents.JobContext):
     
     session.on("agent_said", on_agent_said)
 
-    # ... The rest of your entrypoint is correct ...
+    await ctx.connect()
     await session.start(
         room=ctx.room,
         agent=agent,
@@ -91,12 +89,17 @@ async def entrypoint(ctx: agents.JobContext):
             audio_enabled=True,
         ),
     )
-    await ctx.connect()
+    # await ctx.connect()
     stable_user_identity = "sofia_memory_user"
     agent.set_user_identity(stable_user_identity)
-    await session.generate_reply(
-        instructions=SESSION_INSTRUCTION
-    )
+    try:
+        logging.info("Attempting to generate initial greeting...")
+        await session.generate_reply(
+            instructions=SESSION_INSTRUCTION
+        )
+        logging.info("Initial greeting generated successfully.")
+    except Exception as e:
+        logging.error(f"Could not generate initial reply: {e}")
 
 if __name__ == "__main__":
     agents.cli.run_app(agents.WorkerOptions(entrypoint_fnc=entrypoint))

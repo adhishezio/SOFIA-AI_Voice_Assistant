@@ -1,40 +1,36 @@
 import { useState } from 'react';
-import { Room } from './Room';
-import { LiveKitRoom } from '@livekit/components-react';
+import {
+  LiveKitRoom,
+  ControlBar,
+  Chat,
+  AudioTrack,
+  useTracks,
+  type TrackReference,
+  LayoutContextProvider, // Import the missing provider
+} from '@livekit/components-react';
 import '@livekit/components-styles';
 import './App.css';
+import { Track } from 'livekit-client';
+import { SofiaUI } from './SofiaUI';
+import clsx from 'clsx';
 
 const serverUrl = import.meta.env.VITE_LIVEKIT_URL;
 const tokenServerUrl = 'http://localhost:3001';
 
 function App() {
   const [token, setToken] = useState<string | null>(null);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
-  const handleConnect = async () => {
+  const connectToSofia = async () => {
     try {
-      console.log('--- Starting Connection Process ---');
       const roomName = 'sofia-room';
       const userIdentity = 'human_user_adhish';
-
       const response = await fetch(
         `${tokenServerUrl}/get-livekit-token?room=${roomName}&identity=${userIdentity}`
       );
-      if (!response.ok) {
-        throw new Error('Failed to fetch token from server.');
-      }
-      
+      if (!response.ok) throw new Error('Failed to fetch token');
       const data = await response.json();
-      
-
-      console.log('1. Full response object from server:', data); 
-      
-      // This will show us what is inside the 'token' property.
-      console.log('2. Extracted "token" property:', data.token);
-
-      console.log('3. Type of extracted token:', typeof data.token);
-  
       setToken(data.token);
-
     } catch (e) {
       console.error(e);
     }
@@ -42,8 +38,8 @@ function App() {
 
   if (!token) {
     return (
-      <div className="container">
-        <button onClick={handleConnect}>Connect to SOFIA</button>
+      <div className="connect-container">
+        <button onClick={connectToSofia}>Connect to SOFIA</button>
       </div>
     );
   }
@@ -53,12 +49,49 @@ function App() {
       serverUrl={serverUrl}
       token={token}
       connect={true}
-      video={true}
+      video={false}
       audio={true}
+      data-lk-theme="default"
     >
-      <Room />
+      {/* This provider is required for the chat controls to work */}
+      <LayoutContextProvider onWidgetChange={(widget) => setIsChatOpen(widget.showChat)}>
+        <div className="main-container">
+          <SofiaUI />
+          <AudioRenderer />
+          
+          <div className={clsx('chat-panel', { hidden: !isChatOpen })}>
+            <Chat />
+          </div>
+
+          <ControlBar
+            controls={{
+              microphone: true,
+              camera: true,
+              chat: true, // Use the default library toggle behavior
+              screenShare: true,
+              leave: true,
+            }}
+          />
+        </div>
+      </LayoutContextProvider>
     </LiveKitRoom>
   );
 }
+
+// This helper component correctly renders remote audio
+const AudioRenderer = () => {
+  const audioTracks = useTracks([
+    { source: Track.Source.Microphone, withPlaceholder: false },
+  ]);
+  return (
+    <>
+      {audioTracks
+        .filter((trackRef): trackRef is TrackReference => !!trackRef.publication)
+        .map((trackRef) => (
+          <AudioTrack key={trackRef.publication.trackSid} trackRef={trackRef} />
+        ))}
+    </>
+  );
+};
 
 export default App;

@@ -30,7 +30,6 @@ export const ConnectionManager = ({ onConnected, children }: ConnectionManagerPr
         throw new Error(`Failed to fetch token: ${response.status} ${response.statusText} - ${errorText}`);
       }
 
-      // Parse JSON response
       const data = await response.json(); 
 
       console.log("Token server response data:", data);

@@ -130,10 +130,9 @@ export const SofiaUI = () => {
         };
     }, [isUserSpeaking, isSofiaSpeaking]);
 
-    // --- FIX 2: Add the correct type to the options object ---
     const particlesOptions: ISourceOptions = {
         "particles": {
-            "number": { "value": 30, "density": { "enable": true, "value_area": 800 } },
+            "number": { "value": 70, "density": { "enable": true, "value_area": 800 } },
             "color": { "value": "#004aff" },
             "shape": { "type": "circle" },
             "opacity": { "value": 0.5 },

@@ -28,7 +28,7 @@
 }
 
 #sofia-banner {
-  position: relative; /* Changed from fixed to relative */
+  position: relative; 
   padding-top: 24px;
   text-align: center;
   pointer-events: none;
@@ -38,7 +38,6 @@
   letter-spacing: 0.15em;
 }
 
-/* --- SOFIA Title Animation (Unchanged) --- */
 
 #sofia-banner span {
   display: inline-block;
@@ -58,9 +57,7 @@
 #sofia-banner span:nth-child(4) { animation-delay: 1.2s; }
 #sofia-banner span:nth-child(5) { animation-delay: 1.6s; }
 
-/* --- LiveKit Control Bar Overrides --- */
 
-/* The [data-lk-theme='default'] makes our rule more specific to override defaults */
 [data-lk-theme='default'] .lk-control-bar {
   position: relative; /* Changed from absolute to relative */
   bottom: 20px;
